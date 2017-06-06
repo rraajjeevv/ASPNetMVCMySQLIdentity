@@ -22,5 +22,7 @@ c. 'Web.Config' file
 - In the section '<connectionStrings>', rename the existing connection called 'DefaultConnection' to something else.
 - Add a new connection called 'DefaultConnection' with providerName="MySql.Data.MySqlClient". This connection is the one that will be used to connect to MySQL database. Check the database name is 'dummymvc' (same as the one where identity tables have been saved)
 
+Now rebuild the solution
+
 
 
