@@ -8,6 +8,12 @@ MySQL -
 - Create identity tables using the SQL statments in the file 20170606_createtables_dummymvc.sql
 
 Visual Studio 
+a. MVC Application
 - Create a new project  File --> New Project
-- From the list of templates, select Web
+- From the list of templates, select 'Web' and then 'ASP.Net Web Application'.
+- Next select 'MVC' template with the default option, the authentication method used will be 'Individual User Accounts'. Select 'OK'
+
+b. Configuring MVC application
+- 
+
 
