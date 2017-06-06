@@ -7,13 +7,18 @@ MySQL -
 - create database schema dummymvc
 - Create identity tables using the SQL statments in the file 20170606_createtables_dummymvc.sql
 
-Visual Studio 
+Visual Studio
+
 a. MVC Application
 - Create a new project  File --> New Project
 - From the list of templates, select 'Web' and then 'ASP.Net Web Application'.
 - Next select 'MVC' template with the default option, the authentication method used will be 'Individual User Accounts'. Select 'OK'
 
-b. Configuring MVC application
-- 
+b. Install 'MySQL.Data.Entity'
+- Using Nuget Package Manager install 'MySQL.Data.Entity', which is the MySQL provider for EntityFramework
+
+c. 'Web.Config' file
+- Open Web.Config file
+- In the section '<connectionStrings>', rename the existing  
 
 
