@@ -55,6 +55,7 @@ https://coding.abel.nu/2012/03/ef-migrations-command-reference/
 add Migration History --
 Open Tools --> Nuget Package Manager --> Package Manager Console
 - Enable-Migrations 
+also check Enable-Migrations -EnableAutomaticMigrations -Force -ContextTypeName ApplicationDbContext
 - Add-Migration Initial
 - Update-Database
 
