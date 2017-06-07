@@ -58,6 +58,24 @@ Open Tools --> Nuget Package Manager --> Package Manager Console
 - Add-Migration Initial
 - Update-Database
 
+in ApplicationDbClass add
+protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //if (modelBuilder == null)
+            //{
+            //    throw new ArgumentNullException(nameof(modelBuilder));
+            //}
+
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUser>().Property(u => u.UserName).HasMaxLength(128);
+
+            //Uncomment this to have Email length 128 too (not neccessary)
+            //modelBuilder.Entity<ApplicationUser>().Property(u => u.Email).HasMaxLength(128);
+
+            modelBuilder.Entity<IdentityRole>().Property(r => r.Name).HasMaxLength(128);
+        }
+
 
 if model has been changed then run the following commands from package manager console -
 - Add-Migration Length_Constraints
