@@ -49,6 +49,9 @@ create table `__MigrationHistory` (`MigrationId` nvarchar(150)  not null ,`Conte
 -- for code first
 http://www.thinkprogramming.co.uk/code-first-with-mysql-and-entity-framework-6/
 
+- ef migration
+https://coding.abel.nu/2012/03/ef-migrations-command-reference/
+
 add Migration History --
 Open Tools --> Nuget Package Manager --> Package Manager Console
 - Enable-Migrations 
