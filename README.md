@@ -49,9 +49,15 @@ create table `__MigrationHistory` (`MigrationId` nvarchar(150)  not null ,`Conte
 -- for code first
 http://www.thinkprogramming.co.uk/code-first-with-mysql-and-entity-framework-6/
 
+add Migration History --
 Open Tools --> Nuget Package Manager --> Package Manager Console
 - Enable-Migrations 
 - Add-Migration Initial
+- Update-Database
+
+
+if model has been changed then run the following commands from package manager console -
+- Add-Migration Length_Constraints
 - Update-Database
 
 
