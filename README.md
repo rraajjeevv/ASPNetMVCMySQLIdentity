@@ -31,11 +31,6 @@ SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSq
 
 3. Open the file 'IdentityModels.cs' in the folder 'Models'. In ApplicationDbContext add
         {
-            //if (modelBuilder == null)
-            //{
-            //    throw new ArgumentNullException(nameof(modelBuilder));
-            //}
-
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ApplicationUser>().Property(u => u.UserName).HasMaxLength(128);
