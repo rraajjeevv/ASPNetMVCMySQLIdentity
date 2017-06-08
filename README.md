@@ -3,9 +3,6 @@ Use ASP.Net identity provided with MySQL database
 
 I have tested it using Visual Studio 2013 (Update 5) and MySQL version 5.5.10
 
-MySQL -
-- create database schema 'dummymvc'
-- Create identity tables using the SQL statments in the file 20170606_createtables_dummymvc.sql . All of the tables will be created in the database 'dummymvc'.
 
 Visual Studio
 
@@ -20,46 +17,19 @@ b. Install 'MySQL.Data.Entity'
 c. 'Web.Config' file
 - Open Web.Config file
 - In the section '<connectionStrings>', rename the existing connection called 'DefaultConnection' to something else.
-- Add a new connection called 'DefaultConnection' with providerName="MySql.Data.MySqlClient". This connection is the one that will be used to connect to MySQL database. Check the database name is 'dummymvc' (same as the one where identity tables have been saved)
+- Add a new connection called 'DefaultConnection' with providerName="MySql.Data.MySqlClient". This connection is the one that will be used to connect to MySQL database. Check the database name is 'dummymvc4' (same as the one where identity tables have been saved)
+- change '<entityFramework>' to '<entityFramework codeConfigurationType="MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6">'
 
 Now rebuild the solution
 
 
--- Attempt at genrating tables from code behind
-
-1. Migrations/Configuration.cs file 
-Under Configuration() add
+-- Attempt at generating tables from code behind
+Open Package Manager Console from Tools --> Nuget Package Manager --> Package Manager Console
+1. In the console, Type 'Enable-Migrations'
+2. In the folder 'Migrations' open 'Configuration.cs' Under Configuration() add
 SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
 
-Otherwise you will get the error -
-No MigrationSqlGenerator found for provider 'MySql.Data.MySqlClient'. Use the SetSqlGenerator method in the target migrations configuration class to register additional SQL generators.
-
-2. Web.config file
-change '<entityFramework>' to '<entityFramework codeConfigurationType="MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6">'
-
-Else you will get the error -
-Specified key was too long; max key length is 767 bytes
-so instead of 
-create table `__MigrationHistory` (`MigrationId` nvarchar(150)  not null ,`ContextKey` nvarchar(300)  not null ,`Model` longblob not null ,`ProductVersion` nvarchar(32)  not null ,primary key ( `MigrationId`,`ContextKey`) ) engine=InnoDb auto_increment=0
-
-the create table command will be 
-create table `__MigrationHistory` (`MigrationId` nvarchar(150)  not null ,`ContextKey` nvarchar(300)  not null ,`Model` longblob not null ,`ProductVersion` nvarchar(32)  not null ,primary key ( `MigrationId`) ) engine=InnoDb auto_increment=0
-
-
--- for code first
-http://www.thinkprogramming.co.uk/code-first-with-mysql-and-entity-framework-6/
-
-- ef migration
-https://coding.abel.nu/2012/03/ef-migrations-command-reference/
-
-add Migration History --
-Open Tools --> Nuget Package Manager --> Package Manager Console
-- Enable-Migrations 
-- Add-Migration Initial
-- Update-Database
-
-in ApplicationDbClass add
-protected override void OnModelCreating(DbModelBuilder modelBuilder)
+3. Open the file 'IdentityModels.cs' in the folder 'Models'. In ApplicationDbContext add
         {
             //if (modelBuilder == null)
             //{
@@ -75,10 +45,11 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
 
             modelBuilder.Entity<IdentityRole>().Property(r => r.Name).HasMaxLength(128);
         }
+4. Rebuild th solution
+5. Open Package Manager Console and type 'Add-Migration Initial' and then 'Update-Databse -Verbose'
+
+All the identity tables will now be created in the database.
 
 
-if model has been changed then run the following commands from package manager console -
-- Add-Migration Length_Constraints
-- Update-Database
 
 
