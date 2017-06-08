@@ -30,6 +30,7 @@ Open Package Manager Console from Tools --> Nuget Package Manager --> Package Ma
 SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
 
 3. Open the file 'IdentityModels.cs' in the folder 'Models'. In ApplicationDbContext add
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -41,6 +42,7 @@ SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSq
 
             modelBuilder.Entity<IdentityRole>().Property(r => r.Name).HasMaxLength(128);
         }
+        
 4. Rebuild the solution
 5. Open Package Manager Console and type 'Add-Migration Initial' and then 'Update-Databse -Verbose'
 
