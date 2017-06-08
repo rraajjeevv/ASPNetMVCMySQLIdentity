@@ -42,7 +42,7 @@ SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSq
 
             modelBuilder.Entity<IdentityRole>().Property(r => r.Name).HasMaxLength(128);
         }
-   This is to reduce the size of column 'Name' in the table 'aspnetusers' and 'aspnetroles' to '128'. 
+   This is to reduce the size of column 'Name' in the table 'aspnetusers' and 'aspnetroles' to '128'. Else you will get the error 'Specified key was too long; max key length is 767 bytes'
 4. Rebuild the solution
 5. Open Package Manager Console and type 'Add-Migration Initial' and then 'Update-Databse -Verbose'
 
