@@ -48,6 +48,13 @@ SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSq
 
 All the identity tables will now be created in the database.
 
+Note -
+Instead of changing  '<entityFramework>' to '<entityFramework codeConfigurationType="MySql.Data.Entity.MySqlEFConfiguration, MySql.Data.Entity.EF6">' in the web.config file, you can either -
+
+Add DbConfigurationTypeAttribute on the context class: 
+[DbConfigurationType(typeof(MySqlEFConfiguration))]
+or 
+add DbConfiguration.SetConfiguration(new MySqlEFConfiguration()) at the application start up. 
 
 
 -- for code first
@@ -56,5 +63,6 @@ All the identity tables will now be created in the database.
 -- ef migration
         https://coding.abel.nu/2012/03/ef-migrations-command-reference/
 
-
+-- MtSQL link
+https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework60.html
 
