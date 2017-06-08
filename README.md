@@ -50,4 +50,11 @@ All the identity tables will now be created in the database.
 
 
 
+-- for code first
+        http://www.thinkprogramming.co.uk/code-first-with-mysql-and-entity-framework-6/
+ 
+-- ef migration
+        https://coding.abel.nu/2012/03/ef-migrations-command-reference/
+
+
 
